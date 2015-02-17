@@ -33,26 +33,28 @@
             this.IDBox = new System.Windows.Forms.ListBox();
             this.NameBox = new System.Windows.Forms.ListBox();
             this.HourBox = new System.Windows.Forms.ListBox();
-            this.LevelBox = new System.Windows.Forms.ListBox();
-            this.DateBox = new System.Windows.Forms.ListBox();
             this.NameLabel = new System.Windows.Forms.Label();
             this.HoursLabel = new System.Windows.Forms.Label();
             this.LevelLabel = new System.Windows.Forms.Label();
             this.AccountCreationLabel = new System.Windows.Forms.Label();
-            this.ViewProfileLabel = new System.Windows.Forms.Label();
             this.SteamID64Label = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ViewProfileLabel = new System.Windows.Forms.Label();
+            this.DateBox = new System.Windows.Forms.ListBox();
+            this.LevelBox = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnCount = 7;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.523809F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.761905F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.523811F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.86544F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.727829F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tableLayoutPanel1.Controls.Add(this.IDBox, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.NameBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.HourBox, 2, 3);
@@ -65,7 +67,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(660, 521);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(710, 521);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -85,7 +87,7 @@
             this.NameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.NameBox.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.NameBox.FormattingEnabled = true;
-            this.NameBox.Location = new System.Drawing.Point(160, 3);
+            this.NameBox.Location = new System.Drawing.Point(161, 3);
             this.NameBox.Name = "NameBox";
             this.NameBox.Size = new System.Drawing.Size(151, 511);
             this.NameBox.TabIndex = 1;
@@ -96,33 +98,11 @@
             this.HourBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.HourBox.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.HourBox.FormattingEnabled = true;
-            this.HourBox.Location = new System.Drawing.Point(317, 3);
+            this.HourBox.Location = new System.Drawing.Point(319, 3);
             this.HourBox.Name = "HourBox";
             this.HourBox.Size = new System.Drawing.Size(88, 511);
             this.HourBox.TabIndex = 2;
             this.HourBox.SelectedIndexChanged += new System.EventHandler(this.HourBox_SelectedIndexChanged);
-            // 
-            // LevelBox
-            // 
-            this.LevelBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.LevelBox.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.LevelBox.FormattingEnabled = true;
-            this.LevelBox.Location = new System.Drawing.Point(411, 3);
-            this.LevelBox.Name = "LevelBox";
-            this.LevelBox.Size = new System.Drawing.Size(56, 511);
-            this.LevelBox.TabIndex = 3;
-            this.LevelBox.SelectedIndexChanged += new System.EventHandler(this.LevelBox_SelectedIndexChanged);
-            // 
-            // DateBox
-            // 
-            this.DateBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.DateBox.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.DateBox.FormattingEnabled = true;
-            this.DateBox.Location = new System.Drawing.Point(473, 3);
-            this.DateBox.Name = "DateBox";
-            this.DateBox.Size = new System.Drawing.Size(151, 511);
-            this.DateBox.TabIndex = 4;
-            this.DateBox.SelectedIndexChanged += new System.EventHandler(this.DateBox_SelectedIndexChanged);
             // 
             // NameLabel
             // 
@@ -172,18 +152,6 @@
             this.AccountCreationLabel.Text = "Member Since";
             this.AccountCreationLabel.Click += new System.EventHandler(this.AccountCreationLabel_Click);
             // 
-            // ViewProfileLabel
-            // 
-            this.ViewProfileLabel.AutoSize = true;
-            this.ViewProfileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewProfileLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.ViewProfileLabel.Location = new System.Drawing.Point(635, 9);
-            this.ViewProfileLabel.Name = "ViewProfileLabel";
-            this.ViewProfileLabel.Size = new System.Drawing.Size(37, 15);
-            this.ViewProfileLabel.TabIndex = 6;
-            this.ViewProfileLabel.Text = "View";
-            this.ViewProfileLabel.Click += new System.EventHandler(this.ViewProfileLabel_Click);
-            // 
             // SteamID64Label
             // 
             this.SteamID64Label.AutoSize = true;
@@ -196,12 +164,58 @@
             this.SteamID64Label.Text = "SteamID64";
             this.SteamID64Label.Click += new System.EventHandler(this.SteamID64Label_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.Location = new System.Drawing.Point(678, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 15);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Add";
+            // 
+            // ViewProfileLabel
+            // 
+            this.ViewProfileLabel.AutoSize = true;
+            this.ViewProfileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewProfileLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.ViewProfileLabel.Location = new System.Drawing.Point(635, 9);
+            this.ViewProfileLabel.Name = "ViewProfileLabel";
+            this.ViewProfileLabel.Size = new System.Drawing.Size(37, 15);
+            this.ViewProfileLabel.TabIndex = 6;
+            this.ViewProfileLabel.Text = "View";
+            this.ViewProfileLabel.Click += new System.EventHandler(this.ViewProfileLabel_Click);
+            // 
+            // DateBox
+            // 
+            this.DateBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.DateBox.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.DateBox.FormattingEnabled = true;
+            this.DateBox.Location = new System.Drawing.Point(477, 3);
+            this.DateBox.Name = "DateBox";
+            this.DateBox.Size = new System.Drawing.Size(139, 511);
+            this.DateBox.TabIndex = 4;
+            this.DateBox.SelectedIndexChanged += new System.EventHandler(this.DateBox_SelectedIndexChanged);
+            // 
+            // LevelBox
+            // 
+            this.LevelBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.LevelBox.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.LevelBox.FormattingEnabled = true;
+            this.LevelBox.Location = new System.Drawing.Point(414, 3);
+            this.LevelBox.Name = "LevelBox";
+            this.LevelBox.Size = new System.Drawing.Size(56, 511);
+            this.LevelBox.TabIndex = 3;
+            this.LevelBox.SelectedIndexChanged += new System.EventHandler(this.LevelBox_SelectedIndexChanged);
+            // 
             // ResultsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(684, 562);
+            this.ClientSize = new System.Drawing.Size(734, 562);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.SteamID64Label);
             this.Controls.Add(this.ViewProfileLabel);
             this.Controls.Add(this.AccountCreationLabel);
@@ -227,13 +241,14 @@
         private System.Windows.Forms.Label HoursLabel;
         private System.Windows.Forms.Label LevelLabel;
         private System.Windows.Forms.Label AccountCreationLabel;
-        private System.Windows.Forms.Label ViewProfileLabel;
         private System.Windows.Forms.Label SteamID64Label;
         public System.Windows.Forms.ListBox IDBox;
         public System.Windows.Forms.ListBox NameBox;
         public System.Windows.Forms.ListBox HourBox;
         public System.Windows.Forms.ListBox LevelBox;
         public System.Windows.Forms.ListBox DateBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ViewProfileLabel;
 
 
 

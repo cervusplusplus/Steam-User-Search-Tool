@@ -9,13 +9,16 @@ using System.IO;
 using System.Windows.Forms;
 using System.Collections;
 using System.Net;
+using System.Threading;
+
 
 namespace Player_Finder
 {
     public partial class InputForm : Form
     {
         ArrayList idarray = new ArrayList();
-
+        // Results window opened here.
+        ResultsForm results = new ResultsForm();
         public InputForm()
         {
             InitializeComponent();
@@ -41,16 +44,6 @@ namespace Player_Finder
 
         }
 
-        private void LevelLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AgeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void GroupBox_TextChanged(object sender, EventArgs e)
         {
 
@@ -66,21 +59,10 @@ namespace Player_Finder
 
         }
 
-        private void LevelBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AgeBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            // Results window opened here.
-            ResultsForm results = new ResultsForm();
-            results.Show();
-
+            const int size = 15;
+            Thread[] workers = new Thread[size];
             string data = "";
             string data2 = "";
             int userpage = 1;
@@ -132,136 +114,199 @@ namespace Player_Finder
                     data = data.Substring(index + 28);
                 }
             }
+
+            int liveThreads = 0;
+
+            int idcounter = 0;
+
             // Web request sent for each Steam ID in the array.
             foreach (string id in idarray)
             {
-                string gameurl = "http://steamcommunity.com/profiles/" + id + "/games/?xml=1";
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(gameurl);
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-                if (response.StatusCode == HttpStatusCode.OK)
+                idcounter++;
+                progressBar1.Value = (int) (((float) idcounter / idarray.Count) * 100);
+                progressBar1.Refresh();
+                if (liveThreads < size)
                 {
-                    Stream receiveStream = response.GetResponseStream();
-                    StreamReader readStream = null;
-
-                    if (response.CharacterSet == null)
-                    {
-                        readStream = new StreamReader(receiveStream);
-                    }
-                    else
-                    {
-                        readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
-                    }
-
-                    data = readStream.ReadToEnd();
-
-                    // Copy of data unedited data string to use for displaying usernames of users that meet requirements.
-                    data2 = data;
-
-                    response.Close();
-                    readStream.Close();
+                    workers[liveThreads] = new Thread(fetchInfo);
+                    workers[liveThreads].Start(id);
+                    liveThreads++;
                 }
 
-                int index = 0;
-                // Index of the specified appID found here.  Then, the next time <hoursOnRecord> is seen, it will be for the correct appID.
-                
-                if (-1 != (index = data.IndexOf("<appID>"+AppIDBox.Text+"</appID>")))
+                else
                 {
-                    data = data.Substring(index);
-                    index = data.IndexOf("<hoursOnRecord>");
-                    data = data.Substring(index + 15);
-                    index = data.IndexOf("<");
-                    double hours = Double.Parse(data.Substring(0, index));
-
-                    index = 0;
-                    data2 = data2.Substring(index);
-                    index = data2.IndexOf("<![CDATA[");
-                    data2 = data2.Substring(index + 9);
-                    index = data2.IndexOf("]]>");
-                    string username = data2.Substring(0, index);
-
-                    // All users with the specified number of hours are filtered out and added to the ID list box in the results window.
-                    if (HoursBox.SelectedIndex == 0)
+                    for (int i = 0; i < liveThreads; i++)
                     {
-                        if (hours >= 1 && hours <= 10)
+                        if (!workers[i].IsAlive)
                         {
-                            results.IDBox.Items.Add(id);
-                            results.NameBox.Items.Add(username);
-                            results.HourBox.Items.Add(hours);
-                        }
-                    }
-
-                    else if (HoursBox.SelectedIndex == 1)
-                    {
-                        if (hours >= 10 && hours <= 25)
-                        {
-                            results.IDBox.Items.Add(id);
-                            results.NameBox.Items.Add(username);
-                            results.HourBox.Items.Add(hours);
-                        }
-                    }
-
-                    else if (HoursBox.SelectedIndex == 2)
-                    {
-                        if (hours >= 25 && hours <= 50)
-                        {
-                            results.IDBox.Items.Add(id);
-                            results.NameBox.Items.Add(username);
-                            results.HourBox.Items.Add(hours);
-                        }
-                    }
-
-                    else if (HoursBox.SelectedIndex == 3)
-                    {
-                        if (hours >= 50 && hours <= 100)
-                        {
-                            results.IDBox.Items.Add(id);
-                            results.NameBox.Items.Add(username);
-                            results.HourBox.Items.Add(hours);
-                        }
-                    }
-
-                    else if (HoursBox.SelectedIndex == 4)
-                    {
-                        if (hours >= 100 && hours <= 250)
-                        {
-                            results.IDBox.Items.Add(id);
-                            results.NameBox.Items.Add(username);
-                            results.HourBox.Items.Add(hours);
-                        }
-                    }
-
-                    else if (HoursBox.SelectedIndex == 5)
-                    {
-                        if (hours >= 250 && hours <= 500)
-                        {
-                            results.IDBox.Items.Add(id);
-                            results.NameBox.Items.Add(username);
-                            results.HourBox.Items.Add(hours);
-                        }
-                    }
-
-                    else if (HoursBox.SelectedIndex == 6)
-                    {
-                        if (hours >= 500 && hours <= 1000)
-                        {
-                            results.IDBox.Items.Add(id);
-                            results.NameBox.Items.Add(username);
-                            results.HourBox.Items.Add(hours);
-                        }
-                    }
-
-                    else if (HoursBox.SelectedIndex == 7)
-                    {
-                        if (hours >= 1000)
-                        {
-                            results.IDBox.Items.Add(id);
-                            results.NameBox.Items.Add(username);
-                            results.HourBox.Items.Add(hours);
+                            workers[i] = workers[liveThreads - 1];
+                            liveThreads--;
+                            i--;
                         }
                     }
                 }
             }
+            results.Show();
+        }
+        void fetchInfo(object id1)
+        {
+            string data = "";
+            string data2 = "";
+            string id = (string)id1;
+
+            string gameurl = "http://steamcommunity.com/profiles/" + id + "/games/?xml=1";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(gameurl);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream receiveStream = response.GetResponseStream();
+                StreamReader readStream = null;
+
+                if (response.CharacterSet == null)
+                {
+                    readStream = new StreamReader(receiveStream);
+                }
+                else
+                {
+                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                }
+
+                data = readStream.ReadToEnd();
+
+                // Copy of data unedited data string to use for displaying usernames of users that meet requirements.
+                data2 = data;
+                response.Close();
+                readStream.Close();
+            }
+            int index = 0;
+            // Index of the specified appID found here.  Then, the next time <hoursOnRecord> is seen, it will be for the correct appID.
+
+            if (-1 != (index = data.IndexOf("<appID>" + AppIDBox.Text + "</appID>")))
+            {
+                data = data.Substring(index);
+                index = data.IndexOf("<hoursOnRecord>");
+                data = data.Substring(index + 15);
+                index = data.IndexOf("<");
+                double hours = Double.Parse(data.Substring(0, index));
+
+                // Using the copied data2 from earlier, the user's name is parsed and displayed in the results window if they meet the desired hour filter.
+                index = 0;
+                data2 = data2.Substring(index);
+                index = data2.IndexOf("<![CDATA[");
+                data2 = data2.Substring(index + 9);
+                index = data2.IndexOf("]]>");
+                string username = data2.Substring(0, index);
+
+                // All users with the specified number of hours are filtered and added to the ID list box in the results window.
+                if (HoursBox.SelectedIndex == 0)
+                {
+                    if (hours >= 1 && hours <= 10)
+                    {
+                        results.IDBox.Items.Add(id);
+                        results.NameBox.Items.Add(username);
+                        results.HourBox.Items.Add(hours);
+                        results.IDBox.Refresh();
+                        results.NameBox.Refresh();
+                        results.HourBox.Refresh();
+                    }
+                }
+
+                else if (HoursBox.SelectedIndex == 1)
+                {
+                    if (hours >= 10 && hours <= 25)
+                    {
+                        results.IDBox.Items.Add(id);
+                        results.NameBox.Items.Add(username);
+                        results.HourBox.Items.Add(hours);
+                        results.IDBox.Refresh();
+                        results.NameBox.Refresh();
+                        results.HourBox.Refresh();
+                    }
+                }
+
+                else if (HoursBox.SelectedIndex == 2)
+                {
+                    if (hours >= 25 && hours <= 50)
+                    {
+                        results.IDBox.Items.Add(id);
+                        results.NameBox.Items.Add(username);
+                        results.HourBox.Items.Add(hours);
+                        results.IDBox.Refresh();
+                        results.NameBox.Refresh();
+                        results.HourBox.Refresh();
+                    }
+                }
+
+                else if (HoursBox.SelectedIndex == 3)
+                {
+                    if (hours >= 50 && hours <= 100)
+                    {
+                        results.IDBox.Items.Add(id);
+                        results.NameBox.Items.Add(username);
+                        results.HourBox.Items.Add(hours);
+                        results.IDBox.Refresh();
+                        results.NameBox.Refresh();
+                        results.HourBox.Refresh();
+                    }
+                }
+
+                else if (HoursBox.SelectedIndex == 4)
+                {
+                    if (hours >= 100 && hours <= 250)
+                    {
+                        results.IDBox.Items.Add(id);
+                        results.NameBox.Items.Add(username);
+                        results.HourBox.Items.Add(hours);
+                        results.IDBox.Refresh();
+                        results.NameBox.Refresh();
+                        results.HourBox.Refresh();
+                    }
+                }
+
+                else if (HoursBox.SelectedIndex == 5)
+                {
+                    if (hours >= 250 && hours <= 500)
+                    {
+                        results.IDBox.Items.Add(id);
+                        results.NameBox.Items.Add(username);
+                        results.HourBox.Items.Add(hours);
+                        results.IDBox.Refresh();
+                        results.NameBox.Refresh();
+                        results.HourBox.Refresh();
+                    }
+                }
+
+                else if (HoursBox.SelectedIndex == 6)
+                {
+                    if (hours >= 500 && hours <= 1000)
+                    {
+                        results.IDBox.Items.Add(id);
+                        results.NameBox.Items.Add(username);
+                        results.HourBox.Items.Add(hours);
+                        results.IDBox.Refresh();
+                        results.NameBox.Refresh();
+                        results.HourBox.Refresh();
+                    }
+                }
+
+                else if (HoursBox.SelectedIndex == 7)
+                {
+                    if (hours >= 1000)
+                    {
+                        results.IDBox.Items.Add(id);
+                        results.NameBox.Items.Add(username);
+                        results.HourBox.Items.Add(hours);
+                        results.IDBox.Refresh();
+                        results.NameBox.Refresh();
+                        results.HourBox.Refresh();
+                    }
+                }
+            }
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

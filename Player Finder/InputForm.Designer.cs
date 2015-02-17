@@ -35,22 +35,19 @@
             this.AppIDBox = new System.Windows.Forms.TextBox();
             this.HoursLabel = new System.Windows.Forms.Label();
             this.HoursBox = new System.Windows.Forms.ComboBox();
-            this.LevelLabel = new System.Windows.Forms.Label();
-            this.LevelBox = new System.Windows.Forms.ComboBox();
-            this.AgeBox = new System.Windows.Forms.ComboBox();
-            this.AgeLabel = new System.Windows.Forms.Label();
             this.SteamGroupLabel = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.SearchProgressLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SearchButton
             // 
             this.SearchButton.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.SearchButton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.SearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.SearchButton.Location = new System.Drawing.Point(0, 320);
+            this.SearchButton.Location = new System.Drawing.Point(29, 125);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(284, 42);
+            this.SearchButton.Size = new System.Drawing.Size(229, 45);
             this.SearchButton.TabIndex = 0;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = false;
@@ -118,69 +115,6 @@
             this.HoursBox.TabIndex = 6;
             this.HoursBox.SelectedIndexChanged += new System.EventHandler(this.HoursBox_SelectedIndexChanged);
             // 
-            // LevelLabel
-            // 
-            this.LevelLabel.AutoSize = true;
-            this.LevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LevelLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.LevelLabel.Location = new System.Drawing.Point(21, 115);
-            this.LevelLabel.Name = "LevelLabel";
-            this.LevelLabel.Size = new System.Drawing.Size(113, 20);
-            this.LevelLabel.TabIndex = 7;
-            this.LevelLabel.Text = "Steam Level:";
-            this.LevelLabel.Click += new System.EventHandler(this.LevelLabel_Click);
-            // 
-            // LevelBox
-            // 
-            this.LevelBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.LevelBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LevelBox.FormattingEnabled = true;
-            this.LevelBox.Items.AddRange(new object[] {
-            "No Filter",
-            "1-10",
-            "11-20",
-            "21-30",
-            "31-40",
-            "41-50",
-            "51-100",
-            "101+"});
-            this.LevelBox.Location = new System.Drawing.Point(140, 115);
-            this.LevelBox.Name = "LevelBox";
-            this.LevelBox.Size = new System.Drawing.Size(132, 24);
-            this.LevelBox.TabIndex = 8;
-            this.LevelBox.SelectedIndexChanged += new System.EventHandler(this.LevelBox_SelectedIndexChanged);
-            // 
-            // AgeBox
-            // 
-            this.AgeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AgeBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AgeBox.FormattingEnabled = true;
-            this.AgeBox.Items.AddRange(new object[] {
-            "No Filter",
-            "0-1 Years",
-            "1-2 Years",
-            "2-3 Years",
-            "3-4 Years",
-            "4-5 Years",
-            "5+ Years"});
-            this.AgeBox.Location = new System.Drawing.Point(140, 145);
-            this.AgeBox.Name = "AgeBox";
-            this.AgeBox.Size = new System.Drawing.Size(132, 24);
-            this.AgeBox.TabIndex = 9;
-            this.AgeBox.SelectedIndexChanged += new System.EventHandler(this.AgeBox_SelectedIndexChanged);
-            // 
-            // AgeLabel
-            // 
-            this.AgeLabel.AutoSize = true;
-            this.AgeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AgeLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.AgeLabel.Location = new System.Drawing.Point(17, 145);
-            this.AgeLabel.Name = "AgeLabel";
-            this.AgeLabel.Size = new System.Drawing.Size(117, 20);
-            this.AgeLabel.TabIndex = 10;
-            this.AgeLabel.Text = "Account Age:";
-            this.AgeLabel.Click += new System.EventHandler(this.AgeLabel_Click);
-            // 
             // SteamGroupLabel
             // 
             this.SteamGroupLabel.AutoSize = true;
@@ -193,17 +127,34 @@
             this.SteamGroupLabel.Text = "Steam Group:";
             this.SteamGroupLabel.Click += new System.EventHandler(this.SteamGroupLabel_Click_1);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(12, 201);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(260, 29);
+            this.progressBar1.TabIndex = 12;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
+            // SearchProgressLabel
+            // 
+            this.SearchProgressLabel.AutoSize = true;
+            this.SearchProgressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchProgressLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.SearchProgressLabel.Location = new System.Drawing.Point(67, 178);
+            this.SearchProgressLabel.Name = "SearchProgressLabel";
+            this.SearchProgressLabel.Size = new System.Drawing.Size(147, 20);
+            this.SearchProgressLabel.TabIndex = 13;
+            this.SearchProgressLabel.Text = "Search Progress:";
+            // 
             // InputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(284, 362);
+            this.ClientSize = new System.Drawing.Size(284, 242);
+            this.Controls.Add(this.SearchProgressLabel);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.SteamGroupLabel);
-            this.Controls.Add(this.AgeLabel);
-            this.Controls.Add(this.AgeBox);
-            this.Controls.Add(this.LevelBox);
-            this.Controls.Add(this.LevelLabel);
             this.Controls.Add(this.HoursBox);
             this.Controls.Add(this.HoursLabel);
             this.Controls.Add(this.AppIDBox);
@@ -228,11 +179,9 @@
         private System.Windows.Forms.TextBox AppIDBox;
         private System.Windows.Forms.Label HoursLabel;
         private System.Windows.Forms.ComboBox HoursBox;
-        private System.Windows.Forms.Label LevelLabel;
-        private System.Windows.Forms.ComboBox LevelBox;
-        private System.Windows.Forms.ComboBox AgeBox;
-        private System.Windows.Forms.Label AgeLabel;
         private System.Windows.Forms.Label SteamGroupLabel;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label SearchProgressLabel;
     }
 }
 
