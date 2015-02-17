@@ -82,8 +82,11 @@ namespace Player_Finder
             results.Show();
 
             string data = "";
+            string data2 = "";
+            string username = "";
             int userpage = 1;
             bool diff = true;
+
             // This line takes the user's input into the group box and puts it into a string for the group's URL.
             string groupurl = "http://steamcommunity.com/groups/" + GroupBox.Text + "/memberslistxml/?xml=1&p=";
 
@@ -153,11 +156,17 @@ namespace Player_Finder
 
                     data = readStream.ReadToEnd();
 
+                    // Copy of data unedited data string to use for displaying usernames of users that meet requirements.
+                    data2 = data;
+
                     response.Close();
                     readStream.Close();
                 }
+
                 int index = 0;
+                int index2 = 0;
                 // Index of the specified appID found here.  Then, the next time <hoursOnRecord> is seen, it will be for the correct appID.
+                
                 if (-1 != (index = data.IndexOf("<appID>"+AppIDBox.Text+"</appID>")))
                 {
                     data = data.Substring(index);
@@ -166,11 +175,20 @@ namespace Player_Finder
                     index = data.IndexOf("<");
                     double hours = Double.Parse(data.Substring(0, index));
 
+                    data2 = data2.Substring(index2);
+                    index2 = data2.IndexOf("<steamID>");
+                    data2 = data2.Substring(index2 + 9);
+                    index2 = data2.IndexOf("</steamID>");
+                    username = data.Substring(0, index2);
+
+                    // All users with the specified number of hours are filtered out and added to the ID list box in the results window.
                     if (HoursBox.SelectedIndex == 0)
                     {
                         if (hours >= 1 && hours <= 10)
                         {
-                            results.listBox1.Items.Add(id);
+                            results.IDBox.Items.Add(id);
+                            results.NameBox.Items.Add(username);
+                            results.HourBox.Items.Add(hours);
                         }
                     }
 
@@ -178,7 +196,9 @@ namespace Player_Finder
                     {
                         if (hours >= 10 && hours <= 25)
                         {
-                            results.listBox1.Items.Add(id);
+                            results.IDBox.Items.Add(id);
+                            results.NameBox.Items.Add(username);
+                            results.HourBox.Items.Add(hours);
                         }
                     }
 
@@ -186,7 +206,9 @@ namespace Player_Finder
                     {
                         if (hours >= 25 && hours <= 50)
                         {
-                            results.listBox1.Items.Add(id);
+                            results.IDBox.Items.Add(id);
+                            results.NameBox.Items.Add(username);
+                            results.HourBox.Items.Add(hours);
                         }
                     }
 
@@ -194,7 +216,9 @@ namespace Player_Finder
                     {
                         if (hours >= 50 && hours <= 100)
                         {
-                            results.listBox1.Items.Add(id);
+                            results.IDBox.Items.Add(id);
+                            results.NameBox.Items.Add(username);
+                            results.HourBox.Items.Add(hours);
                         }
                     }
 
@@ -202,7 +226,9 @@ namespace Player_Finder
                     {
                         if (hours >= 100 && hours <= 250)
                         {
-                            results.listBox1.Items.Add(id);
+                            results.IDBox.Items.Add(id);
+                            results.NameBox.Items.Add(username);
+                            results.HourBox.Items.Add(hours);
                         }
                     }
 
@@ -210,7 +236,9 @@ namespace Player_Finder
                     {
                         if (hours >= 250 && hours <= 500)
                         {
-                            results.listBox1.Items.Add(id);
+                            results.IDBox.Items.Add(id);
+                            results.NameBox.Items.Add(username);
+                            results.HourBox.Items.Add(hours);
                         }
                     }
 
@@ -218,7 +246,9 @@ namespace Player_Finder
                     {
                         if (hours >= 500 && hours <= 1000)
                         {
-                            results.listBox1.Items.Add(id);
+                            results.IDBox.Items.Add(id);
+                            results.NameBox.Items.Add(username);
+                            results.HourBox.Items.Add(hours);
                         }
                     }
 
@@ -226,7 +256,9 @@ namespace Player_Finder
                     {
                         if (hours >= 1000)
                         {
-                            results.listBox1.Items.Add(id);
+                            results.IDBox.Items.Add(id);
+                            results.NameBox.Items.Add(username);
+                            results.HourBox.Items.Add(hours);
                         }
                     }
                 }

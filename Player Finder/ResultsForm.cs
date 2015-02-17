@@ -21,22 +21,62 @@ namespace Player_Finder
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void SteamID64Label_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void NameLabel_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void HoursLabel_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void LevelLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AccountCreationLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ViewProfileLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IDBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NameBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HourBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LevelBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DateBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
