@@ -83,7 +83,6 @@ namespace Player_Finder
 
             string data = "";
             string data2 = "";
-            string username = "";
             int userpage = 1;
             bool diff = true;
 
@@ -164,7 +163,6 @@ namespace Player_Finder
                 }
 
                 int index = 0;
-                int index2 = 0;
                 // Index of the specified appID found here.  Then, the next time <hoursOnRecord> is seen, it will be for the correct appID.
                 
                 if (-1 != (index = data.IndexOf("<appID>"+AppIDBox.Text+"</appID>")))
@@ -175,11 +173,12 @@ namespace Player_Finder
                     index = data.IndexOf("<");
                     double hours = Double.Parse(data.Substring(0, index));
 
-                    data2 = data2.Substring(index2);
-                    index2 = data2.IndexOf("<steamID>");
-                    data2 = data2.Substring(index2 + 9);
-                    index2 = data2.IndexOf("</steamID>");
-                    username = data.Substring(0, index2);
+                    index = 0;
+                    data2 = data2.Substring(index);
+                    index = data2.IndexOf("<![CDATA[");
+                    data2 = data2.Substring(index + 9);
+                    index = data2.IndexOf("]]>");
+                    string username = data2.Substring(0, index);
 
                     // All users with the specified number of hours are filtered out and added to the ID list box in the results window.
                     if (HoursBox.SelectedIndex == 0)
