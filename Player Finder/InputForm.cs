@@ -77,13 +77,17 @@ namespace Player_Finder
         }
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            // Results window opened here.
+            ResultsForm results = new ResultsForm();
+            results.Show();
+
             string data = "";
             int userpage = 1;
             bool diff = true;
             // This line takes the user's input into the group box and puts it into a string for the group's URL.
             string groupurl = "http://steamcommunity.com/groups/" + GroupBox.Text + "/memberslistxml/?xml=1&p=";
 
-
+            // Web request sent to parse for all steamID64 numbers in the group.
             while (diff == true)
             {
                 diff = false;
@@ -154,7 +158,7 @@ namespace Player_Finder
                 }
                 int index = 0;
                 // Index of the specified appID found here.  Then, the next time <hoursOnRecord> is seen, it will be for the correct appID.
-                while (-1 != (index = data.IndexOf("<appID>"+AppIDBox.Text+"</appID>")))
+                if (-1 != (index = data.IndexOf("<appID>"+AppIDBox.Text+"</appID>")))
                 {
                     data = data.Substring(index);
                     index = data.IndexOf("<hoursOnRecord>");
@@ -162,11 +166,71 @@ namespace Player_Finder
                     index = data.IndexOf("<");
                     double hours = Double.Parse(data.Substring(0, index));
 
+                    if (HoursBox.SelectedIndex == 0)
+                    {
+                        if (hours >= 1 && hours <= 10)
+                        {
+                            results.listBox1.Items.Add(id);
+                        }
+                    }
+
+                    else if (HoursBox.SelectedIndex == 1)
+                    {
+                        if (hours >= 10 && hours <= 25)
+                        {
+                            results.listBox1.Items.Add(id);
+                        }
+                    }
+
+                    else if (HoursBox.SelectedIndex == 2)
+                    {
+                        if (hours >= 25 && hours <= 50)
+                        {
+                            results.listBox1.Items.Add(id);
+                        }
+                    }
+
+                    else if (HoursBox.SelectedIndex == 3)
+                    {
+                        if (hours >= 50 && hours <= 100)
+                        {
+                            results.listBox1.Items.Add(id);
+                        }
+                    }
+
+                    else if (HoursBox.SelectedIndex == 4)
+                    {
+                        if (hours >= 100 && hours <= 250)
+                        {
+                            results.listBox1.Items.Add(id);
+                        }
+                    }
+
+                    else if (HoursBox.SelectedIndex == 5)
+                    {
+                        if (hours >= 250 && hours <= 500)
+                        {
+                            results.listBox1.Items.Add(id);
+                        }
+                    }
+
+                    else if (HoursBox.SelectedIndex == 6)
+                    {
+                        if (hours >= 500 && hours <= 1000)
+                        {
+                            results.listBox1.Items.Add(id);
+                        }
+                    }
+
+                    else if (HoursBox.SelectedIndex == 7)
+                    {
+                        if (hours >= 1000)
+                        {
+                            results.listBox1.Items.Add(id);
+                        }
+                    }
                 }
             }
-            // Results window opened here.
-            ResultsForm results = new ResultsForm();
-            results.Show();
         }
     }
 }
