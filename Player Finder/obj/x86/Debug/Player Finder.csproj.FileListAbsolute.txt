@@ -1,0 +1,18 @@
+G:\Programming Projects\Player Finder\Player Finder\bin\Debug\Player Finder.exe
+G:\Programming Projects\Player Finder\Player Finder\bin\Debug\Player Finder.pdb
+G:\Programming Projects\Player Finder\Player Finder\obj\x86\Debug\Player_Finder.InputForm.resources
+G:\Programming Projects\Player Finder\Player Finder\obj\x86\Debug\Player_Finder.Properties.Resources.resources
+G:\Programming Projects\Player Finder\Player Finder\obj\x86\Debug\Player Finder.csproj.GenerateResource.Cache
+G:\Programming Projects\Player Finder\Player Finder\obj\x86\Debug\Player Finder.exe
+G:\Programming Projects\Player Finder\Player Finder\obj\x86\Debug\Player Finder.pdb
+G:\Programming Projects\Player Finder\Player Finder\obj\x86\Debug\Player_Finder.ResultsForm.resources
+G:\Programming Projects\Player Finder\Player Finder\obj\x86\Debug\Player Finder.csprojResolveAssemblyReference.cache
+G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Debug\Player Finder.exe
+G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Debug\Player Finder.pdb
+G:\Programming Projects\Steam User Search Tool\Player Finder\bin\Debug\Player Finder.exe
+G:\Programming Projects\Steam User Search Tool\Player Finder\bin\Debug\Player Finder.pdb
+G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Debug\Player Finder.csprojResolveAssemblyReference.cache
+G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Debug\Player_Finder.InputForm.resources
+G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Debug\Player_Finder.Properties.Resources.resources
+G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Debug\Player_Finder.ResultsForm.resources
+G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Debug\Player Finder.csproj.GenerateResource.Cache
