@@ -61,10 +61,10 @@ namespace Player_Finder
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            const int size = 15;
+            const int size = 50;
             Thread[] workers = new Thread[size];
             string data = "";
-            string data2 = "";
+
             int userpage = 1;
             bool diff = true;
 
@@ -123,7 +123,7 @@ namespace Player_Finder
             foreach (string id in idarray)
             {
                 idcounter++;
-                progressBar1.Value = (int) (((float) idcounter / idarray.Count) * 100);
+                progressBar1.Value = (int)(((float)idcounter / idarray.Count) * 100);
                 progressBar1.Refresh();
                 if (liveThreads < size)
                 {
@@ -134,13 +134,16 @@ namespace Player_Finder
 
                 else
                 {
-                    for (int i = 0; i < liveThreads; i++)
+                    while (liveThreads >= size)
                     {
-                        if (!workers[i].IsAlive)
+                        for (int i = 0; i < liveThreads; i++)
                         {
-                            workers[i] = workers[liveThreads - 1];
-                            liveThreads--;
-                            i--;
+                            if (workers[i].Join(1))
+                            {
+                                workers[i] = workers[liveThreads - 1];
+                                liveThreads--;
+                                i--;
+                            }
                         }
                     }
                 }
@@ -151,6 +154,7 @@ namespace Player_Finder
         {
             string data = "";
             string data2 = "";
+            string data3 = "";
             string id = (string)id1;
 
             string gameurl = "http://steamcommunity.com/profiles/" + id + "/games/?xml=1";
@@ -190,102 +194,144 @@ namespace Player_Finder
                 double hours = Double.Parse(data.Substring(0, index));
 
                 // Using the copied data2 from earlier, the user's name is parsed and displayed in the results window if they meet the desired hour filter.
-                index = 0;
-                data2 = data2.Substring(index);
+
                 index = data2.IndexOf("<![CDATA[");
                 data2 = data2.Substring(index + 9);
                 index = data2.IndexOf("]]>");
                 string username = data2.Substring(0, index);
 
+                string profileurl = "http://steamcommunity.com/profiles/" + id + "/?xml=1";
+                request = (HttpWebRequest)WebRequest.Create(profileurl);
+                response = (HttpWebResponse)request.GetResponse();
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    Stream receiveStream = response.GetResponseStream();
+                    StreamReader readStream = null;
+
+                    if (response.CharacterSet == null)
+                    {
+                        readStream = new StreamReader(receiveStream);
+                    }
+                    else
+                    {
+                        readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                    }
+
+                    data3 = readStream.ReadToEnd();
+
+                    response.Close();
+                    readStream.Close();
+                }
+
+                index = data3.IndexOf("<memberSince>");
+                data3 = data3.Substring(index + 13);
+                index = data3.IndexOf("</memberSince>");
+                string joindate = data3.Substring(0, index);
+
                 // All users with the specified number of hours are filtered and added to the ID list box in the results window.
                 if (HoursBox.SelectedIndex == 0)
                 {
-                    if (hours >= 1 && hours <= 10)
+                    if (hours >= 1 && hours <= 100)
                     {
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
+                        results.DateBox.Items.Add(joindate);
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
+                        results.DateBox.Refresh();
                     }
                 }
 
                 else if (HoursBox.SelectedIndex == 1)
                 {
-                    if (hours >= 10 && hours <= 25)
+                    if (hours >= 100)
                     {
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
+                        results.DateBox.Items.Add(joindate);
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
+                        results.DateBox.Refresh();
                     }
                 }
 
                 else if (HoursBox.SelectedIndex == 2)
                 {
-                    if (hours >= 25 && hours <= 50)
+                    if (hours >= 200)
                     {
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
+                        results.DateBox.Items.Add(joindate);
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
+                        results.DateBox.Refresh();
                     }
                 }
 
                 else if (HoursBox.SelectedIndex == 3)
                 {
-                    if (hours >= 50 && hours <= 100)
+                    if (hours >= 300)
                     {
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
+                        results.DateBox.Items.Add(joindate);
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
+                        results.DateBox.Refresh();
                     }
                 }
 
                 else if (HoursBox.SelectedIndex == 4)
                 {
-                    if (hours >= 100 && hours <= 250)
+                    if (hours >= 400)
                     {
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
+                        results.DateBox.Items.Add(joindate);
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
+                        results.DateBox.Refresh();
                     }
                 }
 
                 else if (HoursBox.SelectedIndex == 5)
                 {
-                    if (hours >= 250 && hours <= 500)
+                    if (hours >= 500)
                     {
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
+                        results.DateBox.Items.Add(joindate);
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
+                        results.DateBox.Refresh();
                     }
                 }
 
                 else if (HoursBox.SelectedIndex == 6)
                 {
-                    if (hours >= 500 && hours <= 1000)
+                    if (hours >= 750)
                     {
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
+                        results.DateBox.Items.Add(joindate);
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
+                        results.DateBox.Refresh();
                     }
                 }
 
@@ -296,9 +342,11 @@ namespace Player_Finder
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
+                        results.DateBox.Items.Add(joindate);
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
+                        results.DateBox.Refresh();
                     }
                 }
             }

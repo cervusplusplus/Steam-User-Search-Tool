@@ -101,13 +101,13 @@
             this.HoursBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HoursBox.FormattingEnabled = true;
             this.HoursBox.Items.AddRange(new object[] {
-            "1-10 hours",
-            "10-25 hours",
-            "25-50 hours",
-            "50-100 hours",
-            "100-250 hours",
-            "250-500 hours",
-            "500-1000 hours",
+            "1-100 hours",
+            "100+ hours",
+            "200+ hours",
+            "300+ hours",
+            "400+ hours",
+            "500+ hours",
+            "750+ hours",
             "1000+ hours"});
             this.HoursBox.Location = new System.Drawing.Point(140, 85);
             this.HoursBox.Name = "HoursBox";

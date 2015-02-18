@@ -36,17 +36,7 @@ namespace Player_Finder
 
         }
 
-        private void LevelLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AccountCreationLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ViewProfileLabel_Click(object sender, EventArgs e)
         {
 
         }
@@ -66,17 +56,22 @@ namespace Player_Finder
 
         }
 
-        private void LevelBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void DateBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ProfileButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FriendButton_Click(object sender, EventArgs e)
         {
 
         }
