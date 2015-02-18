@@ -24,41 +24,6 @@ namespace Player_Finder
             InitializeComponent();
         }
 
-        private void InputForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SteamGroupLabel_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void GameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void HoursLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void GroupBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AppIDBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void HoursBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void SearchButton_Click(object sender, EventArgs e)
         {
             const int size = 50;
@@ -229,7 +194,8 @@ namespace Player_Finder
                 index = data3.IndexOf("</memberSince>");
                 string joindate = data3.Substring(0, index);
 
-                // All users with the specified number of hours are filtered and added to the ID list box in the results window.
+                // All users with the specified number of hours are filtered and added to the ID list box in the results window, 
+                // along with their corresponding names and signup dates.
                 if (HoursBox.SelectedIndex == 0)
                 {
                     if (hours >= 1 && hours <= 100)
@@ -350,6 +316,46 @@ namespace Player_Finder
                     }
                 }
             }
+        }
+
+        private void InputForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SteamGroupLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HoursLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GroupBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AppIDBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HoursBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SearchProgressLabel_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void progressBar1_Click(object sender, EventArgs e)

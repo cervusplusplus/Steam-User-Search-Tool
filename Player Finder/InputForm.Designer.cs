@@ -125,7 +125,7 @@
             this.SteamGroupLabel.Size = new System.Drawing.Size(121, 20);
             this.SteamGroupLabel.TabIndex = 11;
             this.SteamGroupLabel.Text = "Steam Group:";
-            this.SteamGroupLabel.Click += new System.EventHandler(this.SteamGroupLabel_Click_1);
+            this.SteamGroupLabel.Click += new System.EventHandler(this.SteamGroupLabel_Click);
             // 
             // progressBar1
             // 
@@ -145,6 +145,7 @@
             this.SearchProgressLabel.Size = new System.Drawing.Size(147, 20);
             this.SearchProgressLabel.TabIndex = 13;
             this.SearchProgressLabel.Text = "Search Progress:";
+            this.SearchProgressLabel.Click += new System.EventHandler(this.SearchProgressLabel_Click);
             // 
             // InputForm
             // 

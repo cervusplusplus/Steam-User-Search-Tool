@@ -16,9 +16,14 @@ namespace Player_Finder
             InitializeComponent();
         }
 
-        private void ResultsForm_Load(object sender, EventArgs e)
+        private void ProfileButton_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Process.Start("steam://url/SteamIDPage/" + IDBox.SelectedItem);
+        }
 
+        private void FriendButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("steam://friends/add/" + IDBox.SelectedItem);
         }
 
         private void SteamID64Label_Click(object sender, EventArgs e)
@@ -66,14 +71,9 @@ namespace Player_Finder
 
         }
 
-        private void ProfileButton_Click(object sender, EventArgs e)
+        private void ResultsForm_Load(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("steam://url/SteamIDPage/" + IDBox.SelectedItem);
-        }
 
-        private void FriendButton_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("steam://friends/add/" + IDBox.SelectedItem);
         }
     }
 }
