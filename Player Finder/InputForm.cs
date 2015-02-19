@@ -17,8 +17,7 @@ namespace Player_Finder
     public partial class InputForm : Form
     {
         ArrayList idarray = new ArrayList();
-        // Results window opened here.
-        ResultsForm results = new ResultsForm();
+        ResultsForm results = new ResultsForm(); // Results window opened here.
         public InputForm()
         {
             InitializeComponent();
@@ -26,6 +25,10 @@ namespace Player_Finder
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            results.Close(); // Closes the results form in case the user tries to search again after already using it.
+            results = new ResultsForm(); // "
+            idarray.Clear(); // "
+
             const int size = 50;
             Thread[] workers = new Thread[size];
             string data = "";
@@ -113,14 +116,27 @@ namespace Player_Finder
                     }
                 }
             }
-            results.Show();
-            results.backgroundWorker1.RunWorkerAsync();
+
+            while (liveThreads > 0)
+            {
+                for (int i = 0; i < liveThreads; i++)
+                {
+                    if (workers[i].Join(1))
+                    {
+                        workers[i] = workers[liveThreads - 1];
+                        liveThreads--;
+                        i--;
+                    }
+                }
+            }
+
+            results.Show(); // Shows results form.
+            results.backgroundWorker1.RunWorkerAsync(); // Opens scroll bar synchronization method.
         }
         void fetchInfo(object id1)
         {
             string data = "";
             string data2 = "";
-            string data3 = "";
             string id = (string)id1;
 
             string gameurl = "http://steamcommunity.com/profiles/" + id + "/games/?xml=1";
@@ -166,7 +182,8 @@ namespace Player_Finder
                 index = data2.IndexOf("]]>");
                 string username = data2.Substring(0, index);
 
-                string profileurl = "http://steamcommunity.com/profiles/" + id + "/?xml=1";
+                // Copying to a method - delete later
+                /* string profileurl = "http://steamcommunity.com/profiles/" + id + "/?xml=1";
                 request = (HttpWebRequest)WebRequest.Create(profileurl);
                 response = (HttpWebResponse)request.GetResponse();
 
@@ -188,15 +205,16 @@ namespace Player_Finder
 
                     response.Close();
                     readStream.Close();
-                }
+                } 
 
                 index = data3.IndexOf("<memberSince>");
                 data3 = data3.Substring(index + 13);
                 index = data3.IndexOf("</memberSince>");
-                string joindate = data3.Substring(0, index);
+                string joindate = data3.Substring(0, index); */
 
                 // All users with the specified number of hours are filtered and added to the ID list box in the results window, 
                 // along with their corresponding names and signup dates.
+
                 if (HoursBox.SelectedIndex == 0)
                 {
                     if (hours >= 1 && hours <= 100)
@@ -204,11 +222,13 @@ namespace Player_Finder
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
-                        results.DateBox.Items.Add(joindate);
+                        results.DateBox.Items.Add(ParseProfile(id));
+                        results.LevelBox.Items.Add(ParseLevel(id));
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
                         results.DateBox.Refresh();
+                        results.LevelBox.Refresh();
                     }
                 }
 
@@ -219,11 +239,13 @@ namespace Player_Finder
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
-                        results.DateBox.Items.Add(joindate);
+                        results.DateBox.Items.Add(ParseProfile(id));
+                        results.LevelBox.Items.Add(ParseLevel(id));
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
                         results.DateBox.Refresh();
+                        results.LevelBox.Refresh();
                     }
                 }
 
@@ -234,11 +256,13 @@ namespace Player_Finder
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
-                        results.DateBox.Items.Add(joindate);
+                        results.DateBox.Items.Add(ParseProfile(id));
+                        results.LevelBox.Items.Add(ParseLevel(id));
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
                         results.DateBox.Refresh();
+                        results.LevelBox.Refresh();
                     }
                 }
 
@@ -249,11 +273,13 @@ namespace Player_Finder
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
-                        results.DateBox.Items.Add(joindate);
+                        results.DateBox.Items.Add(ParseProfile(id));
+                        results.LevelBox.Items.Add(ParseLevel(id));
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
                         results.DateBox.Refresh();
+                        results.LevelBox.Refresh();
                     }
                 }
 
@@ -264,11 +290,13 @@ namespace Player_Finder
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
-                        results.DateBox.Items.Add(joindate);
+                        results.DateBox.Items.Add(ParseProfile(id));
+                        results.LevelBox.Items.Add(ParseLevel(id));
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
                         results.DateBox.Refresh();
+                        results.LevelBox.Refresh();
                     }
                 }
 
@@ -279,11 +307,13 @@ namespace Player_Finder
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
-                        results.DateBox.Items.Add(joindate);
+                        results.DateBox.Items.Add(ParseProfile(id));
+                        results.LevelBox.Items.Add(ParseLevel(id));
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
                         results.DateBox.Refresh();
+                        results.LevelBox.Refresh();
                     }
                 }
 
@@ -294,11 +324,13 @@ namespace Player_Finder
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
-                        results.DateBox.Items.Add(joindate);
+                        results.DateBox.Items.Add(ParseProfile(id));
+                        results.LevelBox.Items.Add(ParseLevel(id));
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
                         results.DateBox.Refresh();
+                        results.LevelBox.Refresh();
                     }
                 }
 
@@ -309,14 +341,88 @@ namespace Player_Finder
                         results.IDBox.Items.Add(id);
                         results.NameBox.Items.Add(username);
                         results.HourBox.Items.Add(hours);
-                        results.DateBox.Items.Add(joindate);
+                        results.DateBox.Items.Add(ParseProfile(id));
+                        results.LevelBox.Items.Add(ParseLevel(id));
                         results.IDBox.Refresh();
                         results.NameBox.Refresh();
                         results.HourBox.Refresh();
                         results.DateBox.Refresh();
+                        results.LevelBox.Refresh();
                     }
                 }
             }
+        }
+
+        string ParseProfile(string id)
+        {
+           int index = 0;
+           string data = "";
+           string profileurl = "http://steamcommunity.com/profiles/" + id + "/?xml=1";
+           HttpWebRequest request = (HttpWebRequest)WebRequest.Create(profileurl);
+           HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream receiveStream = response.GetResponseStream();
+                StreamReader readStream = null;
+
+                if (response.CharacterSet == null)
+                {
+                    readStream = new StreamReader(receiveStream);
+                }
+                else
+                {
+                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                }
+
+                data = readStream.ReadToEnd();
+
+                response.Close();
+                readStream.Close();
+            }
+
+            index = data.IndexOf("<memberSince>");
+            data = data.Substring(index + 13);
+            index = data.IndexOf("</memberSince>");
+            string joindate = data.Substring(0, index);
+
+            return joindate;
+        }
+
+        string ParseLevel(string id)
+        {
+            int index = 0;
+            string data = "";
+            string badgepageurl = "http://steamcommunity.com/profiles/" + id + "/badges/";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(badgepageurl);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream receiveStream = response.GetResponseStream();
+                StreamReader readStream = null;
+
+                if (response.CharacterSet == null)
+                {
+                    readStream = new StreamReader(receiveStream);
+                }
+                else
+                {
+                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                }
+
+                data = readStream.ReadToEnd();
+
+                response.Close();
+                readStream.Close();
+            }
+
+            index = data.IndexOf("\"friendPlayerLevelNum\">");
+            data = data.Substring(index + 23);
+            index = data.IndexOf("</span>");
+            string level = data.Substring(0, index);
+
+            return level;
         }
 
         private void InputForm_Load(object sender, EventArgs e)

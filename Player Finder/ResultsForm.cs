@@ -76,12 +76,14 @@ namespace Player_Finder
 
         }
 
+        // This method synchronizes all list box scroll bars in the results window.
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             int IDBoxScrollInt = 0;
             int NameBoxScrollInt = 0;
             int HourBoxScrollInt = 0;
             int DateBoxScrollInt = 0;
+            int LevelBoxScrollInt = 0;
 
             while (true)
             {
@@ -90,11 +92,13 @@ namespace Player_Finder
                     NameBox.TopIndex = IDBox.TopIndex;
                     HourBox.TopIndex = IDBox.TopIndex;
                     DateBox.TopIndex = IDBox.TopIndex;
+                    LevelBox.TopIndex = IDBox.TopIndex;
 
                     IDBoxScrollInt = IDBox.TopIndex;
                     NameBoxScrollInt = NameBox.TopIndex;
                     HourBoxScrollInt = HourBox.TopIndex;
                     DateBoxScrollInt = DateBox.TopIndex;
+                    LevelBoxScrollInt = LevelBox.TopIndex;
                 }
 
                 if (NameBox.TopIndex != NameBoxScrollInt)
@@ -102,11 +106,13 @@ namespace Player_Finder
                     IDBox.TopIndex = NameBox.TopIndex;
                     HourBox.TopIndex = NameBox.TopIndex;
                     DateBox.TopIndex = NameBox.TopIndex;
+                    LevelBox.TopIndex = NameBox.TopIndex;
 
                     IDBoxScrollInt = IDBox.TopIndex;
                     NameBoxScrollInt = NameBox.TopIndex;
                     HourBoxScrollInt = HourBox.TopIndex;
                     DateBoxScrollInt = DateBox.TopIndex;
+                    LevelBoxScrollInt = LevelBox.TopIndex;
                 }
 
                 if (HourBox.TopIndex != HourBoxScrollInt)
@@ -114,11 +120,13 @@ namespace Player_Finder
                     IDBox.TopIndex = HourBox.TopIndex;
                     NameBox.TopIndex = HourBox.TopIndex;
                     DateBox.TopIndex = HourBox.TopIndex;
+                    LevelBox.TopIndex = HourBox.TopIndex;
 
                     IDBoxScrollInt = IDBox.TopIndex;
                     NameBoxScrollInt = NameBox.TopIndex;
                     HourBoxScrollInt = HourBox.TopIndex;
                     DateBoxScrollInt = DateBox.TopIndex;
+                    LevelBoxScrollInt = LevelBox.TopIndex;
                 }
 
                 if (DateBox.TopIndex != DateBoxScrollInt)
@@ -126,11 +134,27 @@ namespace Player_Finder
                     IDBox.TopIndex = DateBox.TopIndex;
                     NameBox.TopIndex = DateBox.TopIndex;
                     HourBox.TopIndex = DateBox.TopIndex;
+                    LevelBox.TopIndex = DateBox.TopIndex;
 
                     IDBoxScrollInt = IDBox.TopIndex;
                     NameBoxScrollInt = NameBox.TopIndex;
                     HourBoxScrollInt = HourBox.TopIndex;
                     DateBoxScrollInt = DateBox.TopIndex;
+                    LevelBoxScrollInt = LevelBox.TopIndex;
+                }
+
+                if (LevelBox.TopIndex != LevelBoxScrollInt)
+                {
+                    IDBox.TopIndex = LevelBox.TopIndex;
+                    NameBox.TopIndex = LevelBox.TopIndex;
+                    HourBox.TopIndex = LevelBox.TopIndex;
+                    DateBox.TopIndex = LevelBox.TopIndex;
+
+                    IDBoxScrollInt = IDBox.TopIndex;
+                    NameBoxScrollInt = NameBox.TopIndex;
+                    HourBoxScrollInt = HourBox.TopIndex;
+                    DateBoxScrollInt = DateBox.TopIndex;
+                    LevelBoxScrollInt = LevelBox.TopIndex;
                 }
             }
         }
