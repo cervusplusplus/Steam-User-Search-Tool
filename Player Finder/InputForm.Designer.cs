@@ -42,7 +42,7 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.SearchButton.BackColor = System.Drawing.Color.Silver;
             this.SearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.SearchButton.Location = new System.Drawing.Point(29, 125);
@@ -139,7 +139,7 @@
             // 
             this.SearchProgressLabel.AutoSize = true;
             this.SearchProgressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchProgressLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.SearchProgressLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.SearchProgressLabel.Location = new System.Drawing.Point(67, 178);
             this.SearchProgressLabel.Name = "SearchProgressLabel";
             this.SearchProgressLabel.Size = new System.Drawing.Size(147, 20);
@@ -162,6 +162,7 @@
             this.Controls.Add(this.GameLabel);
             this.Controls.Add(this.GroupBox);
             this.Controls.Add(this.SearchButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "InputForm";

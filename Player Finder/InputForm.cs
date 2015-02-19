@@ -114,6 +114,7 @@ namespace Player_Finder
                 }
             }
             results.Show();
+            results.backgroundWorker1.RunWorkerAsync();
         }
         void fetchInfo(object id1)
         {

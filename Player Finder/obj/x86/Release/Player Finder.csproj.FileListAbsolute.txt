@@ -6,3 +6,4 @@ G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Release\Pla
 G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Release\Player Finder.csproj.GenerateResource.Cache
 G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Release\Player Finder.exe
 G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Release\Player Finder.pdb
+G:\Programming Projects\Steam User Search Tool\Player Finder\obj\x86\Release\Player Finder.csprojResolveAssemblyReference.cache

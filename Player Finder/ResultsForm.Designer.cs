@@ -40,6 +40,7 @@
             this.AccountCreationLabel = new System.Windows.Forms.Label();
             this.ProfileButton = new System.Windows.Forms.Button();
             this.FriendButton = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -161,10 +162,10 @@
             // 
             // ProfileButton
             // 
-            this.ProfileButton.BackColor = System.Drawing.Color.Lime;
+            this.ProfileButton.BackColor = System.Drawing.Color.Silver;
             this.ProfileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileButton.ForeColor = System.Drawing.Color.Black;
-            this.ProfileButton.Location = new System.Drawing.Point(216, 503);
+            this.ProfileButton.Location = new System.Drawing.Point(153, 503);
             this.ProfileButton.Name = "ProfileButton";
             this.ProfileButton.Size = new System.Drawing.Size(144, 47);
             this.ProfileButton.TabIndex = 8;
@@ -174,16 +175,20 @@
             // 
             // FriendButton
             // 
-            this.FriendButton.BackColor = System.Drawing.Color.Cyan;
+            this.FriendButton.BackColor = System.Drawing.Color.Silver;
             this.FriendButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FriendButton.ForeColor = System.Drawing.Color.Black;
-            this.FriendButton.Location = new System.Drawing.Point(388, 503);
+            this.FriendButton.Location = new System.Drawing.Point(379, 503);
             this.FriendButton.Name = "FriendButton";
             this.FriendButton.Size = new System.Drawing.Size(144, 47);
             this.FriendButton.TabIndex = 9;
             this.FriendButton.Text = "Add Friend";
             this.FriendButton.UseVisualStyleBackColor = false;
             this.FriendButton.Click += new System.EventHandler(this.FriendButton_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
             // ResultsForm
             // 
@@ -198,6 +203,7 @@
             this.Controls.Add(this.HoursLabel);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ResultsForm";
@@ -222,6 +228,7 @@
         private System.Windows.Forms.Label AccountCreationLabel;
         private System.Windows.Forms.Button ProfileButton;
         private System.Windows.Forms.Button FriendButton;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
 
 
 

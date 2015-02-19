@@ -75,5 +75,64 @@ namespace Player_Finder
         {
 
         }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int IDBoxScrollInt = 0;
+            int NameBoxScrollInt = 0;
+            int HourBoxScrollInt = 0;
+            int DateBoxScrollInt = 0;
+
+            while (true)
+            {
+                if (IDBox.TopIndex != IDBoxScrollInt)
+                {
+                    NameBox.TopIndex = IDBox.TopIndex;
+                    HourBox.TopIndex = IDBox.TopIndex;
+                    DateBox.TopIndex = IDBox.TopIndex;
+
+                    IDBoxScrollInt = IDBox.TopIndex;
+                    NameBoxScrollInt = NameBox.TopIndex;
+                    HourBoxScrollInt = HourBox.TopIndex;
+                    DateBoxScrollInt = DateBox.TopIndex;
+                }
+
+                if (NameBox.TopIndex != NameBoxScrollInt)
+                {
+                    IDBox.TopIndex = NameBox.TopIndex;
+                    HourBox.TopIndex = NameBox.TopIndex;
+                    DateBox.TopIndex = NameBox.TopIndex;
+
+                    IDBoxScrollInt = IDBox.TopIndex;
+                    NameBoxScrollInt = NameBox.TopIndex;
+                    HourBoxScrollInt = HourBox.TopIndex;
+                    DateBoxScrollInt = DateBox.TopIndex;
+                }
+
+                if (HourBox.TopIndex != HourBoxScrollInt)
+                {
+                    IDBox.TopIndex = HourBox.TopIndex;
+                    NameBox.TopIndex = HourBox.TopIndex;
+                    DateBox.TopIndex = HourBox.TopIndex;
+
+                    IDBoxScrollInt = IDBox.TopIndex;
+                    NameBoxScrollInt = NameBox.TopIndex;
+                    HourBoxScrollInt = HourBox.TopIndex;
+                    DateBoxScrollInt = DateBox.TopIndex;
+                }
+
+                if (DateBox.TopIndex != DateBoxScrollInt)
+                {
+                    IDBox.TopIndex = DateBox.TopIndex;
+                    NameBox.TopIndex = DateBox.TopIndex;
+                    HourBox.TopIndex = DateBox.TopIndex;
+
+                    IDBoxScrollInt = IDBox.TopIndex;
+                    NameBoxScrollInt = NameBox.TopIndex;
+                    HourBoxScrollInt = HourBox.TopIndex;
+                    DateBoxScrollInt = DateBox.TopIndex;
+                }
+            }
+        }
     }
 }
