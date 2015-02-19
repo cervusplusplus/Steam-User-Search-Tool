@@ -34,6 +34,7 @@
             this.NameBox = new System.Windows.Forms.ListBox();
             this.HourBox = new System.Windows.Forms.ListBox();
             this.DateBox = new System.Windows.Forms.ListBox();
+            this.LevelBox = new System.Windows.Forms.ListBox();
             this.NameLabel = new System.Windows.Forms.Label();
             this.HoursLabel = new System.Windows.Forms.Label();
             this.SteamID64Label = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.ProfileButton = new System.Windows.Forms.Button();
             this.FriendButton = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.LevelBox = new System.Windows.Forms.ListBox();
             this.LevelLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -52,8 +52,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.72131F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.05465F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.279F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.50887F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.804734F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.2011F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel1.Controls.Add(this.IDBox, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.NameBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.HourBox, 2, 3);
@@ -66,7 +66,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(676, 466);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(726, 466);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -77,7 +77,7 @@
             this.IDBox.FormattingEnabled = true;
             this.IDBox.Location = new System.Drawing.Point(3, 3);
             this.IDBox.Name = "IDBox";
-            this.IDBox.Size = new System.Drawing.Size(140, 459);
+            this.IDBox.Size = new System.Drawing.Size(151, 459);
             this.IDBox.TabIndex = 0;
             this.IDBox.SelectedIndexChanged += new System.EventHandler(this.IDBox_SelectedIndexChanged);
             // 
@@ -86,9 +86,9 @@
             this.NameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.NameBox.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.NameBox.FormattingEnabled = true;
-            this.NameBox.Location = new System.Drawing.Point(149, 3);
+            this.NameBox.Location = new System.Drawing.Point(160, 3);
             this.NameBox.Name = "NameBox";
-            this.NameBox.Size = new System.Drawing.Size(196, 459);
+            this.NameBox.Size = new System.Drawing.Size(211, 459);
             this.NameBox.TabIndex = 1;
             this.NameBox.SelectedIndexChanged += new System.EventHandler(this.NameBox_SelectedIndexChanged);
             // 
@@ -97,9 +97,9 @@
             this.HourBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.HourBox.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.HourBox.FormattingEnabled = true;
-            this.HourBox.Location = new System.Drawing.Point(351, 3);
+            this.HourBox.Location = new System.Drawing.Point(377, 3);
             this.HourBox.Name = "HourBox";
-            this.HourBox.Size = new System.Drawing.Size(63, 459);
+            this.HourBox.Size = new System.Drawing.Size(68, 459);
             this.HourBox.TabIndex = 2;
             this.HourBox.SelectedIndexChanged += new System.EventHandler(this.HourBox_SelectedIndexChanged);
             // 
@@ -108,11 +108,21 @@
             this.DateBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DateBox.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.DateBox.FormattingEnabled = true;
-            this.DateBox.Location = new System.Drawing.Point(420, 3);
+            this.DateBox.Location = new System.Drawing.Point(451, 3);
             this.DateBox.Name = "DateBox";
-            this.DateBox.Size = new System.Drawing.Size(206, 459);
+            this.DateBox.Size = new System.Drawing.Size(205, 459);
             this.DateBox.TabIndex = 4;
             this.DateBox.SelectedIndexChanged += new System.EventHandler(this.DateBox_SelectedIndexChanged);
+            // 
+            // LevelBox
+            // 
+            this.LevelBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.LevelBox.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.LevelBox.FormattingEnabled = true;
+            this.LevelBox.Location = new System.Drawing.Point(662, 3);
+            this.LevelBox.Name = "LevelBox";
+            this.LevelBox.Size = new System.Drawing.Size(61, 459);
+            this.LevelBox.TabIndex = 5;
             // 
             // NameLabel
             // 
@@ -167,7 +177,7 @@
             this.ProfileButton.BackColor = System.Drawing.Color.Silver;
             this.ProfileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileButton.ForeColor = System.Drawing.Color.Black;
-            this.ProfileButton.Location = new System.Drawing.Point(153, 503);
+            this.ProfileButton.Location = new System.Drawing.Point(188, 503);
             this.ProfileButton.Name = "ProfileButton";
             this.ProfileButton.Size = new System.Drawing.Size(144, 47);
             this.ProfileButton.TabIndex = 8;
@@ -180,7 +190,7 @@
             this.FriendButton.BackColor = System.Drawing.Color.Silver;
             this.FriendButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FriendButton.ForeColor = System.Drawing.Color.Black;
-            this.FriendButton.Location = new System.Drawing.Point(379, 503);
+            this.FriendButton.Location = new System.Drawing.Point(435, 503);
             this.FriendButton.Name = "FriendButton";
             this.FriendButton.Size = new System.Drawing.Size(144, 47);
             this.FriendButton.TabIndex = 9;
@@ -191,16 +201,6 @@
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
-            // LevelBox
-            // 
-            this.LevelBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.LevelBox.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.LevelBox.FormattingEnabled = true;
-            this.LevelBox.Location = new System.Drawing.Point(632, 3);
-            this.LevelBox.Name = "LevelBox";
-            this.LevelBox.Size = new System.Drawing.Size(41, 459);
-            this.LevelBox.TabIndex = 5;
             // 
             // LevelLabel
             // 
@@ -218,7 +218,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(706, 562);
+            this.ClientSize = new System.Drawing.Size(753, 562);
             this.Controls.Add(this.LevelLabel);
             this.Controls.Add(this.FriendButton);
             this.Controls.Add(this.ProfileButton);
